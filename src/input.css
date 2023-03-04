@@ -42,7 +42,7 @@ ul {
 
 li {
     display: grid;
-    grid-template-columns: 50px 1fr 80px;
+    grid-template-columns: 40px 1fr 80px;
 }
 
 li section:nth-child(1) {
@@ -50,10 +50,10 @@ li section:nth-child(1) {
 }
 
 li section:nth-child(2) {
-    min-width:60%;
+    min-width:80%;
     box-sizing: border-box;
     padding: 10px;
-    word-wrap: break-word;
+    word-wrap: normal;
     max-width: 100%;
 }
 

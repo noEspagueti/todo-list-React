@@ -13,7 +13,7 @@ export const Li = ({ item }) => {
   return (
     <li className="bg-indigo-500 text-cyan-50 px-5 py-5">
       <section className="flex items-center w-14">
-        <a href="#" className="hover:text-indigo-400">
+        <a href="#" className="hover:text-indigo-700">
           <FiCheckCircle />
         </a>
       </section>
@@ -31,9 +31,11 @@ export const Li = ({ item }) => {
         {(show && (
           <a
             href="#"
+            className="hover:text-green-400"
             onClick={() => getAction.editTask(item.id, task, setShow)}
+
           >
-            <FiCheck color="rgb(128,255,0)"/>
+            <FiCheck/>
           </a>
         )) || (
           <a
