@@ -1,20 +1,14 @@
-import { InputText } from './components/';
-import { ListTask } from './components/ListTask';
-import { useTaskForm } from '../hooks/useTaskForm';
+import { InputText, ListTask } from "./components/";
+import { useTaskForm } from "../hooks/useTaskForm";
+import { TaskContext } from "./components/context/taskContext";
 
 export const App = () => {
+  const [state, refImput, handleChange, handleQuitTask, editTask] = useTaskForm();
 
-    const [state, refImput, handleChange, handleQuitTask] = useTaskForm();
-
-    return (
-        <>
-            <InputText
-                onChange={handleChange}
-                refInput={refImput}
-            />
-            <ListTask
-                state={state}
-                removeTask={handleQuitTask} />
-        </>
-    );
+  return (
+    <TaskContext.Provider value={{ handleQuitTask, editTask }}>
+      <InputText onChange={handleChange} refInput={refImput} />
+      <ListTask state={state} />
+    </TaskContext.Provider>
+  );
 };
