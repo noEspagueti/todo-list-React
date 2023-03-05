@@ -11,7 +11,7 @@ export const useTaskForm = () => {
         refImput.current = data.get('TaskInput');
         if (!refImput.current) return;
         dispatch({ type: 'AddNewTask', addTask: refImput.current });
-        event.target.children[1].firstChild.value = "";
+        document.getElementById("taskInput").value= ""
     };
 
     const handleQuitTask = (idTask) => {
