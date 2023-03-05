@@ -10,7 +10,7 @@ const taskReducer = (state, action) => {
                 }
             ];
             break;
-            
+
         case 'QuitTask':
             return state.filter(item => item.id !== action.index);
             break;
@@ -24,6 +24,13 @@ const taskReducer = (state, action) => {
             });
             break;
 
+        case "TaskDone":
+            return state.map(item => {
+                if (item.id === action.id) {
+                    item.done = !item.done;
+                }
+                return item;
+            })
         default:
             return [];
 

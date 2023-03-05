@@ -12,7 +12,6 @@ export const useTaskForm = () => {
         if (!refImput.current) return;
         dispatch({ type: 'AddNewTask', addTask: refImput.current });
         event.target.children[1].firstChild.value = "";
-
     };
 
     const handleQuitTask = (idTask) => {
@@ -25,6 +24,11 @@ export const useTaskForm = () => {
         show(false);
     }
 
+    const taskDone = (idDone) => {
+        dispatch({ type: "TaskDone", id: idDone });
+    }
+
+
     useEffect(() => {
         localStorage.setItem('task', JSON.stringify(state));
     }, [state]);
@@ -34,6 +38,7 @@ export const useTaskForm = () => {
         refImput,
         handleChange,
         handleQuitTask,
-        editTask
+        editTask,
+        taskDone
     ];
 };

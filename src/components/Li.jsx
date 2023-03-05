@@ -4,16 +4,22 @@ import { TaskContext } from "./context/taskContext";
 import { InputEdit } from "./InputEdit";
 
 export const Li = ({ item }) => {
-  
   const [show, setShow] = useState(false);
   const [task, setTask] = useState(item.task);
 
   const getAction = useContext(TaskContext);
 
   return (
-    <li className="bg-indigo-500 text-cyan-50 px-5 py-5">
+    <li
+      className="bg-indigo-500 text-cyan-50 px-5 py-5"
+      style={{ opacity: item.done ? "0.5" : "1" }}
+    >
       <section className="flex items-center w-14">
-        <a href="#" className="hover:text-indigo-700">
+        <a
+          href="#"
+          className="hover:text-indigo-700"
+          onClick={() => getAction.taskDone(item.id)}
+        >
           <FiCheckCircle />
         </a>
       </section>
@@ -23,7 +29,12 @@ export const Li = ({ item }) => {
           <i>title</i>
         </p>
         {(show && <InputEdit task={task} changeTask={setTask} />) || (
-          <p className="text-2xl">{item.task}</p>
+          <p
+            className="text-2xl"
+            style={{ textDecoration: item.done ? "line-through" : "" }}
+          >
+            {item.task}
+          </p>
         )}
       </section>
 
@@ -33,9 +44,8 @@ export const Li = ({ item }) => {
             href="#"
             className="hover:text-green-400"
             onClick={() => getAction.editTask(item.id, task, setShow)}
-
           >
-            <FiCheck/>
+            <FiCheck />
           </a>
         )) || (
           <a

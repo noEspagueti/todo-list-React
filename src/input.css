@@ -43,6 +43,7 @@ ul {
 li {
     display: grid;
     grid-template-columns: 40px 1fr 80px;
+    align-items: center;
 }
 
 li section:nth-child(1) {
